@@ -13,6 +13,7 @@
 # limitations under the License.
 # ==============================================================================
 """Implements various metric learning losses."""
+
 from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
