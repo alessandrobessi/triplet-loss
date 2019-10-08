@@ -12,7 +12,7 @@ class EmbeddingNet(tf.keras.Model):
         self.layer2 = tf.keras.layers.Dense(dim_dense_2, activation=tf.nn.relu)
         self.out_layer = tf.keras.layers.Dense(dim_embedding)
 
-    def forward(self, x):
+    def call(self, x):
         x = self.layer1(x)
         x = self.layer2(x)
         return self.out_layer(x)

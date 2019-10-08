@@ -12,9 +12,9 @@ def loss_fn(model: tf.keras.Model, inputs: tf.Tensor, labels: tf.Tensor) -> floa
 def train_step(model: tf.keras.Model,
                x_batch: tf.Tensor,
                y_batch: tf.Tensor,
-               optimizer: tf.keras.optimizers) -> None:
-    with tf.GradientTape as tape:
+               optimizer: tf.keras.optimizers) -> tf.keras.metrics.Mean:
+    with tf.GradientTape() as tape:
         loss = loss_fn(model, x_batch, y_batch)
     gradients = tape.gradient(loss, model.trainable_variables)
     optimizer.apply_gradients(zip(gradients, model.trainable_variables))
-    train_loss(loss)
+    return train_loss(loss)
